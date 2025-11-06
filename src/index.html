@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGC - Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Adiciona o Font Awesome para usar Font Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .mobile-screen {
+            height: 90vh; /* Simula a altura de um dispositivo móvel */
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="w-full max-w-sm bg-white rounded-3xl shadow-lg p-8 mobile-screen flex flex-col justify-center">
+        
+        <div class="mx-auto text-center">
+            <!-- Ícone Principal -->
+            <div class="w-20 h-20 bg-gray-200 text-white rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg overflow-hidden">
+                <img src="assets/icons/logo.png" alt="Logo CondomínioApp" class="w-full h-full object-cover" onerror="this.alt='Logo não carregado'; this.src='https://placehold.co/80x80/e0e0e0/333?text=Logo';">
+            </div>
+            
+            <!-- Títulos -->
+            <h1 class="text-2xl font-bold text-gray-800 mb-1">Acesso do Morador</h1>
+            <p class="text-sm text-gray-500 mb-8">Utilize seu e-mail e senha</p>
+        </div>
+
+        <form id="login-form">
+            <!-- Campo de E-mail -->
+            <div class="mb-4">
+                <label for="apartment" class="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                        <!-- Ícone de Chave (Font Awesome) -->
+                        <i class="fa-solid fa-key text-gray-400"></i>
+                    </span>
+                    <input type="text" id="apartment" name="apartment" placeholder="Ex: pessoa@email.com" required
+                           class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-xl focus:ring-blue-500 focus:border-blue-500 transition duration-150">
+                </div>
+            </div>
+
+            <!-- Campo de Senha -->
+            <div class="mb-6">
+                <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Senha</label>
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                        <!-- Ícone de Cadeado (Font Awesome) -->
+                        <i class="fa-solid fa-lock text-gray-400"></i>
+                    </span>
+                    <input type="password" id="password" name="password" placeholder="Sua senha de acesso" required
+                           class="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-xl focus:ring-blue-500 focus:border-blue-500 transition duration-150">
+                    
+                    <!-- Botão de Mostrar/Ocultar Senha -->
+                    <button type="button" id="togglePassword" class="absolute inset-y-0 right-0 flex items-center pr-3 focus:outline-none">
+                        <!-- Ícone de Olho (Inicial: Fechado, Font Awesome) -->
+                        <i id="passwordIcon" class="fa-solid fa-eye-slash text-gray-400 hover:text-gray-600 transition duration-150"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Botão Entrar -->
+            <button type="submit"
+                    class="w-full bg-blue-600 text-white font-semibold py-3 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition duration-300 shadow-md">
+                ENTRAR
+            </button>
+        </form>
+
+        <p class="text-center text-xs text-gray-400 mt-6">
+            Não tem cadastro? Entre em contato com a portaria.
+        </p>
+    </div>
+    <!--Script responsável pela lógica de animação e redirecionamento de página-->
+    <script src="js/login.js"></script>
+</body>
+</html>
