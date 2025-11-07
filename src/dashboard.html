@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condomínio CH7 - Dashboard</title>
+    <!-- Carrega o Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Adiciona o Font Awesome para usar Font Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-gray-200 p-4 flex items-center justify-center min-h-screen">
+
+    <!-- Container principal que simula a tela do app -->
+    <div class="mobile-frame">
+
+        <!-- Cabeçalho do App -->
+        <header class="flex justify-between items-center p-4 bg-white border-b border-gray-200">
+            <div class="flex items-center space-x-3">
+                <!-- Ícone -->
+                <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center shadow">
+                    <svg class="w-7 h-7" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-user">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                <!-- Título e Subtítulo -->
+                <div>
+                    <h1 class="text-base font-bold text-gray-900">Condomínio CH7</h1>
+                    <p class="text-xs text-gray-500">Morador</p>
+                </div>
+            </div>
+
+            <!-- Botão de Sair (Logout) -->
+            <button id="logoutButton" class="text-gray-500 hover:text-gray-800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H3">
+                    </path>
+                </svg>
+            </button>
+        </header>
+
+        <!-- Conteúdo Principal -->
+        <main class="p-4 space-y-5">
+
+            <!-- Banner de Boas-Vindas -->
+            <div class="bg-blue-600 text-white p-5 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold">Olá, João Silva!</h2>
+                <p class="text-sm opacity-90">Bloco A, Apartamento 101</p>
+            </div>
+
+            <!-- Seção do Botão -->
+            <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 text-center">
+                <button id="panicButton"
+                    class="w-48 h-48 bg-red-600 text-white rounded-full shadow-2xl hover:bg-red-700 transition-all duration-300 ease-in-out flex items-center justify-center mx-auto transform active:scale-95">
+                    <span id="panicButtonText" class="text-center">
+                        <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+                            </path>
+                        </svg>
+                        <span class="text-2xl font-bold block mt-2">PÂNICO</span>
+                    </span>
+                </button>
+                <h2 class="text-lg font-semibold text-gray-900 mt-6">Botão de Emergência</h2>
+                <p class="text-sm text-gray-500 mt-1">Pressione em caso de emergência ou situação de risco</p>
+            </div>
+
+            <!-- Grid de Módulos -->
+            <div class="grid grid-cols-2 gap-3">
+
+                <!-- Módulo: Encomendas -->
+                <a href="#"
+                    class="bg-white p-4 rounded-2xl shadow-md flex flex-col items-center justify-center text-center h-40 transition-transform hover:scale-105">
+                    <div class="w-14 h-14 rounded-full flex items-center justify-center bg-blue-100 text-blue-600">
+                        <svg class="w-7 h-7" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-box">
+                            <path
+                                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                            </path>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mt-3 text-sm">Encomendas</h3>
+                    <p class="text-xs text-gray-500 mt-1">Visualizar e gerenciar encomendas</p>
+                </a>
+
+                <!-- Módulo: Visitantes -->
+                <a href="#"
+                    class="bg-white p-4 rounded-2xl shadow-md flex flex-col items-center justify-center text-center h-40 transition-transform hover:scale-105">
+                    <div class="w-14 h-14 rounded-full flex items-center justify-center bg-green-100 text-green-600">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mt-3 text-sm">Visitantes</h3>
+                    <p class="text-xs text-gray-500 mt-1">Cadastrar e gerenciar visitantes</p>
+                </a>
+
+                <!-- Módulo: Quadro de Avisos -->
+                <a href="#"
+                    class="bg-white p-4 rounded-2xl shadow-md flex flex-col items-center justify-center text-center h-40 transition-transform hover:scale-105">
+                    <div class="w-14 h-14 rounded-full flex items-center justify-center bg-purple-100 text-purple-600">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mt-3 text-sm">Quadro de Avisos</h3>
+                    <p class="text-xs text-gray-500 mt-1">Ver avisos do condomínio</p>
+                </a>
+
+                <!-- Módulo: Cadastro de Pets -->
+                <a href="#"
+                    class="bg-white p-4 rounded-2xl shadow-md flex flex-col items-center justify-center text-center h-40 transition-transform hover:scale-105">
+                    <div class="w-14 h-14 rounded-full flex items-center justify-center bg-orange-100 text-orange-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 512 512">
+                            <path
+                                d="M234.5 92.9c14.3 42.9-.3 86.2-32.6 96.8s-70.1-15.6-84.4-58.5 .3-86.2 32.6-96.8 70.1 15.6 84.4 58.5zM100.4 198.6c18.9 32.4 14.3 70.1-10.2 84.1s-59.7-.9-78.5-33.3-14.3-70.1 10.2-84.1 59.7 .9 78.5 33.3zM69.2 401.2C121.6 259.9 214.7 224 256 224s134.4 35.9 186.8 177.2c3.6 9.7 5.2 20.1 5.2 30.5l0 1.6c0 25.8-20.9 46.7-46.7 46.7-11.5 0-22.9-1.4-34-4.2l-88-22c-15.3-3.8-31.3-3.8-46.6 0l-88 22c-11.1 2.8-22.5 4.2-34 4.2-25.8 0-46.7-20.9-46.7-46.7l0-1.6c0-10.4 1.6-20.8 5.2-30.5zM421.8 282.7c-24.5-14-29.1-51.7-10.2-84.1s54-47.3 78.5-33.3 29.1 51.7 10.2 84.1-54 47.3-78.5 33.3zM310.1 189.7c-32.3-10.6-46.9-53.9-32.6-96.8s52.1-69.1 84.4-58.5 46.9 53.9 32.6 96.8-52.1 69.1-84.4 58.5z" />
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mt-3 text-sm">Cadastro de Pets</h3>
+                    <p class="text-xs text-gray-500 mt-1">Gerenciar pets do condomínio</p>
+                </a>
+            </div>
+        </main>
+        <footer
+            class="rounded-2xl bottom-0 left-0 right-0 max-w-1x1 mx-auto bg-white border-t border-gray-200 shadow-lg">
+            <div class="flex justify-around items-center p-3">
+                <!-- Home (Ativo) -->
+                <a href="dashboard.html" class="flex flex-col items-center text-blue-600">
+                    <i class="fa-solid fa-house text-xl"></i>
+                    <span class="text-xs font-semibold">Início</span>
+                </a>
+
+                <!-- Avisos -->
+                <a href="quadro-avisos.html" class="flex flex-col items-center text-gray-500 hover:text-blue-600">
+                    <i class="fa-solid fa-comment text-xl"></i>
+                    <span class="text-xs font-medium">Avisos</span>
+                </a>
+
+                <!-- Encomendas -->
+                <a href="encomendas.html" class="flex flex-col items-center text-gray-500 hover:text-blue-600">
+                    <i class="fa-solid fa-box text-xl"></i>
+                    <span class="text-xs font-medium">Encomendas</span>
+                </a>
+
+                <!-- Visitantes -->
+                <a href="visitantes.html" class="flex flex-col items-center text-gray-500 hover:text-blue-600">
+                    <i class="fa-solid fa-users text-xl"></i>
+                    <span class="text-xs font-medium">Visitantes</span>
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Evento para o botão de sair
+        const logoutButton = document.getElementById('logoutButton');
+        logoutButton.addEventListener('click', () => {
+            console.log('Saindo...');
+            // Redireciona de volta para a página de login
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+
+</html>

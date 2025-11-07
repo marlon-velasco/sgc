@@ -1,0 +1,33 @@
+/* Define a fonte Inter como padrão */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f4f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Simula a moldura de um dispositivo móvel */
+.mobile-frame {
+    width: 100%;
+    max-width: 420px;
+    /* Largura máxima de um celular */
+    min-height: 800px;
+    /* Altura mínima para simular a tela */
+    margin: 0 auto;
+    background-color: #f9fafb;
+    /* Fundo do app */
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    overflow: hidden;
+    /* Garante que o conteúdo não vaze */
+    border: 1px solid #e2e8f0;
+    border-radius: 1.5rem;
+    /* Bordas arredondadas do "aparelho" */
+}
+
+footer {
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    /* Bordas arredondadas do menu de rodapé */
+}
