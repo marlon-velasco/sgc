@@ -66,7 +66,7 @@ Este protótipo foi guiado pelos princípios da ESM, focando na agilidade e na m
 
 -   **Desenvolvimento Iterativo e Ágil:** O projeto foi construído incrementalmente, módulo por módulo (`login` -> `dashboard` -> `pets`...). Isso permitiu a validação de cada fluxo de forma isolada, em "pequenos lotes", exatamente como Valente recomenda.
     
--   **Gestão de Dívida Técnica:** Estamos cientes das dívidas técnicas inerentes a um protótipo de HTML puro. O `README.md` (este documento) e a [Análise de ESM](https://engsoftmoderna.info/ "null") servem como artefatos que registram essas dívidas.
+-   **Gestão de Dívida Técnica:** Estamos cientes das dívidas técnicas inerentes a um protótipo de HTML puro. O `README.md` (este documento) e a [Análise de ESM](https://github.com/marlon-velasco/sgc/blob/main/ESM.md "null") servem como artefatos que registram essas dívidas.
     
 -   **Testabilidade (Desacoplamento):** Onde foi possível, utilizamos o JavaScript estruturado para separar a _lógica de UI_ (manipulação do DOM) da _lógica de negócio_ (o que deve acontecer). Um exemplo é a estruturação dos _event listeners_, que chamam funções de _handler_ (`handleConfirmarAlerta`), em vez de conter a lógica diretamente no _callback_.
     
