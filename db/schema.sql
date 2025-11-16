@@ -3,7 +3,6 @@
  * Script DDL (Data Definition Language)
  */
 
-
 -- Tabela para Cargos/Papéis (Resolve a herança da classe Pessoa)
 CREATE TABLE Cargo (
     id_cargo INT PRIMARY KEY AUTO_INCREMENT,
