@@ -25,12 +25,15 @@ body {
     border-radius: 1.5rem;
     /* Bordas arredondadas do "aparelho" */
 
-    display: flex;              /* ativa flexbox */
-    flex-direction: column;     /* organiza em coluna */
+    display: flex;
+    /* ativa flexbox */
+    flex-direction: column;
+    /* organiza em coluna */
 }
 
 .content {
-    flex: 1; /* ocupa o espaço disponível e empurra o footer para baixo */
+    flex: 1;
+    /* ocupa o espaço disponível e empurra o footer para baixo */
 }
 
 footer {
@@ -41,4 +44,11 @@ footer {
     padding: 10px;
     text-align: center;
     width: 100%;
+}
+
+/* Esconde os seletores padrão de data e hora do Chrome/Safari */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
 }
