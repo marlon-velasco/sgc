@@ -24,10 +24,21 @@ body {
     border: 1px solid #e2e8f0;
     border-radius: 1.5rem;
     /* Bordas arredondadas do "aparelho" */
+
+    display: flex;              /* ativa flexbox */
+    flex-direction: column;     /* organiza em coluna */
+}
+
+.content {
+    flex: 1; /* ocupa o espaço disponível e empurra o footer para baixo */
 }
 
 footer {
     border-top-left-radius: 1.5rem;
     border-top-right-radius: 1.5rem;
     /* Bordas arredondadas do menu de rodapé */
+
+    padding: 10px;
+    text-align: center;
+    width: 100%;
 }
