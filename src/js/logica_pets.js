@@ -1,127 +1,111 @@
+// --- Chaves de Armazenamento ---
+const KEY_REX_STATUS = 'sgc_pet_rex_lost'; // true ou false
+
 // --- Elementos do Modal de Cadastro ---
 const openCadastrarPetModal = document.getElementById("openCadastrarPetModal");
 const cadastrarPetModal = document.getElementById("cadastrarPetModal");
-const closeCadastrarPetModal = document.getElementById(
-  "closeCadastrarPetModal"
-);
+const closeCadastrarPetModal = document.getElementById("closeCadastrarPetModal");
 const petRegistrationForm = document.getElementById("petRegistrationForm");
 
-openCadastrarPetModal.addEventListener("click", () => {
-  cadastrarPetModal.classList.remove("hidden");
-});
+openCadastrarPetModal.addEventListener("click", () => cadastrarPetModal.classList.remove("hidden"));
+closeCadastrarPetModal.addEventListener("click", () => cadastrarPetModal.classList.add("hidden"));
 
-closeCadastrarPetModal.addEventListener("click", () => {
-  cadastrarPetModal.classList.add("hidden");
-});
-
-// Simular envio do formulário de cadastro
 petRegistrationForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  console.log("Novo Pet Cadastrado:", {
-    name: document.getElementById("petName").value,
-    species: document.getElementById("species").value,
-    breed: document.getElementById("breed").value,
-    color: document.getElementById("color").value,
-    description: document.getElementById("description").value,
-  });
+  alert("Pet cadastrado com sucesso! (Simulação)");
   cadastrarPetModal.classList.add("hidden");
-  // Limpar formulário
   petRegistrationForm.reset();
 });
 
-// --- Elementos do Modal Pet Encontrado ---
+// --- Elementos do Modal Pet Encontrado (Outros pets) ---
 const openPetFoundModal = document.getElementById("openPetFoundModal");
 const petFoundModal = document.getElementById("petFoundModal");
 const closePetFoundModal = document.getElementById("closePetFoundModal");
-const confirmFoundAlertButton = document.getElementById(
-  "confirmFoundAlertButton"
-);
+const confirmFoundAlertButton = document.getElementById("confirmFoundAlertButton");
 const cancelFoundButton = document.getElementById("cancelFoundButton");
 
-openPetFoundModal.addEventListener("click", () => {
-  petFoundModal.classList.remove("hidden");
-});
-
-closePetFoundModal.addEventListener("click", () => {
-  petFoundModal.classList.add("hidden");
-});
-
-cancelFoundButton.addEventListener("click", () => {
-  petFoundModal.classList.add("hidden");
-});
+if(openPetFoundModal) {
+    openPetFoundModal.addEventListener("click", () => petFoundModal.classList.remove("hidden"));
+}
+closePetFoundModal.addEventListener("click", () => petFoundModal.classList.add("hidden"));
+cancelFoundButton.addEventListener("click", () => petFoundModal.classList.add("hidden"));
 
 confirmFoundAlertButton.addEventListener("click", () => {
-  console.log(`ALERTA DE PET ENCONTRADO ENVIADO! Pet: Mimi, Dono: Ana Costa`);
+  console.log(`ALERTA ENVIADO!`);
   petFoundModal.classList.add("hidden");
+  // Esconder o card do Mimi se foi encontrado
+  // document.getElementById("cardMimi").classList.add("hidden");
 });
 
-// --- Simular a lógica de Marcar como Encontrado/Perdido ---
+// --- Lógica de Estado (Persistência) para "Meus Pets" ---
 const markFoundButton = document.getElementById("markFoundButton");
 const myPetCardRex = document.getElementById("myPetCardRex");
 const myPetStatusTag = document.getElementById("myPetStatusTag");
 const lostSinceLine = document.getElementById("lostSinceLine");
 const lostPetCount = document.getElementById("lostPetCount");
+const lostPetsAlert = document.getElementById("lostPetsAlert");
 
-let isRexLost = true;
+// Função para atualizar a UI baseada no estado
+function updateRexUI(isLost) {
+    if (!isLost) {
+        // Estado: SEGURO
+        myPetStatusTag.textContent = "Seguro";
+        myPetStatusTag.classList.remove("bg-red-600");
+        myPetStatusTag.classList.add("bg-green-600");
+        
+        // Remove borda vermelha do card
+        myPetCardRex.classList.remove("border-red-500");
+        myPetCardRex.classList.add("border-green-500"); // feedback verde
 
-markFoundButton.addEventListener("click", () => {
-  if (isRexLost) {
-    // Mudar estado para SEGURO
-    myPetStatusTag.textContent = "Seguro";
-    myPetStatusTag.classList.remove("bg-red-600");
-    myPetStatusTag.classList.add("bg-green-600");
+        lostSinceLine.classList.add("hidden");
 
-    lostSinceLine.classList.add("hidden");
+        markFoundButton.textContent = "Marcar como Perdido";
+        markFoundButton.classList.remove("bg-green-600", "hover:bg-green-700");
+        markFoundButton.classList.add("bg-red-600", "hover:bg-red-700");
+        
+    } else {
+        // Estado: PERDIDO
+        myPetStatusTag.textContent = "Perdido";
+        myPetStatusTag.classList.remove("bg-green-600");
+        myPetStatusTag.classList.add("bg-red-600");
+        
+        myPetCardRex.classList.add("border-red-500");
+        myPetCardRex.classList.remove("border-green-500");
 
-    markFoundButton.textContent = "Marcar como Perdido";
-    markFoundButton.classList.remove(
-      "bg-green-600",
-      "text-white",
-      "hover:bg-green-700"
-    );
-    markFoundButton.classList.add(
-      "bg-red-600",
-      "text-white",
-      "hover:bg-red-700"
-    );
+        lostSinceLine.classList.remove("hidden");
 
-    isRexLost = false;
-
-    // Atualiza contagem de pets perdidos no alerta
-    const newCount = parseInt(lostPetCount.textContent) - 1;
-    lostPetCount.textContent = newCount;
-    if (newCount === 0) {
-      document.getElementById("lostPetsAlert").classList.add("hidden");
+        markFoundButton.textContent = "Marcar como Encontrado";
+        markFoundButton.classList.remove("bg-red-600", "hover:bg-red-700");
+        markFoundButton.classList.add("bg-green-600", "hover:bg-green-700");
     }
+    updateGlobalCount(isLost);
+}
 
-    console.log("Pet Rex marcado como ENCONTRADO.");
-  } else {
-    // Mudar estado para PERDIDO
-    myPetStatusTag.textContent = "Perdido";
-    myPetStatusTag.classList.remove("bg-green-600");
-    myPetStatusTag.classList.add("bg-red-600");
+function updateGlobalCount(isRexLost) {
+    // Lógica simplificada: Mimi (1) + Rex (1 se perdido)
+    let count = 1; // Mimi está sempre perdida na simulação base
+    if (isRexLost) count += 1;
+    
+    lostPetCount.textContent = count;
+    if (count === 0) lostPetsAlert.classList.add("hidden");
+    else lostPetsAlert.classList.remove("hidden");
+}
 
-    lostSinceLine.classList.remove("hidden");
+// Inicialização ao carregar a página
+document.addEventListener('DOMContentLoaded', () => {
+    // Lê do localStorage. Se não existir, assume 'false' (Seguro) ou 'true' (Perdido) conforme padrão desejado.
+    // Vamos assumir que começa Seguro se não tiver dados.
+    const storedStatus = localStorage.getItem(KEY_REX_STATUS);
+    const isRexLost = storedStatus === 'true'; // Converte string para boolean
+    
+    updateRexUI(isRexLost);
 
-    markFoundButton.textContent = "Marcar como Encontrado";
-    markFoundButton.classList.remove(
-      "bg-red-600",
-      "text-white",
-      "hover:bg-red-700"
-    );
-    markFoundButton.classList.add(
-      "bg-green-600",
-      "text-white",
-      "hover:bg-green-700"
-    );
-
-    isRexLost = true;
-
-    // Atualiza contagem de pets perdidos no alerta
-    const newCount = parseInt(lostPetCount.textContent) + 1;
-    lostPetCount.textContent = newCount;
-    document.getElementById("lostPetsAlert").classList.remove("hidden");
-
-    console.log("Pet Rex marcado como PERDIDO.");
-  }
+    markFoundButton.addEventListener("click", () => {
+        // Lê o estado atual, inverte e salva
+        const currentStatus = localStorage.getItem(KEY_REX_STATUS) === 'true';
+        const newStatus = !currentStatus;
+        
+        localStorage.setItem(KEY_REX_STATUS, newStatus);
+        updateRexUI(newStatus);
+    });
 });
