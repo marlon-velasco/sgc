@@ -36,12 +36,14 @@
                 <label for="apartment" class="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
                 <div class="relative">
                     <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-                        <!-- Ícone de Chave (Font Awesome) -->
                         <i class="fa-solid fa-key text-gray-400"></i>
                     </span>
-                    <input type="text" id="apartment" name="apartment" placeholder="Ex: pessoa@email.com" required
+                    <!-- CORREÇÃO: type="email" para validação nativa e id="email" para semântica -->
+                    <input type="email" id="email" name="email" placeholder="Ex: pessoa@email.com" required
                         class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-xl focus:ring-blue-500 focus:border-blue-500 transition duration-150">
                 </div>
+                <!-- CORREÇÃO: Container para mensagem de erro -->
+                <p id="email-error" class="hidden text-red-500 text-xs mt-1 ml-1">Por favor, insira um e-mail válido.</p>
             </div>
 
             <!-- Campo de Senha -->
