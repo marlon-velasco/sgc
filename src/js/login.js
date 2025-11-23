@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const passwordValue = passwordInput.value.trim();
 
         // Regex simples para validação de email
+        // https://learn.microsoft.com/pt-br/dotnet/standard/base-types/how-to-verify-that-strings-are-in-valid-email-format
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         // Resetar erros
