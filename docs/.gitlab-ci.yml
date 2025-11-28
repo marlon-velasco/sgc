@@ -1,0 +1,36 @@
+# Define a imagem base do Docker. Node.js é necessário para rodar o Jest.
+image: node:18-alpine
+
+# Define os estágios da pipeline
+stages:
+  - test
+
+# Job de Testes Unitários
+unit_tests:
+  stage: test
+  
+  # Antes do script, instalamos as dependências
+  before_script:
+    - echo "Iniciando configuração do ambiente de teste..."
+    - npm install
+  
+  # O script principal de teste
+  script:
+    - echo "Executando testes unitários com Jest..."
+    - npm test -- --colors --coverage
+  
+  # Configuração para extrair a porcentagem de cobertura (útil para badges no GitLab)
+  coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
+  
+  # Artefatos: guarda o relatório de cobertura para download posterior
+  artifacts:
+    when: always
+    paths:
+      - coverage/
+    expire_in: 1 week
+
+  # Regras de execução: Roda em Merge Requests e na branch principal
+  only:
+    - merge_requests
+    - main
+    - master
